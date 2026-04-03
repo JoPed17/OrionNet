@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contrato de Serviço — Órion Net</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;500;700;900&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
     .contract-page {
@@ -15,30 +18,36 @@
       position: relative;
       overflow: hidden;
     }
+
     .contract-page::before {
       content: '';
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(0,255,240,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,255,240,0.03) 1px, transparent 1px);
+        linear-gradient(rgba(0, 255, 240, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 240, 0.03) 1px, transparent 1px);
       background-size: 60px 60px;
       mask-image: radial-gradient(ellipse 80% 80% at 50% 30%, black 30%, transparent 80%);
     }
+
     .contract-orb {
       position: absolute;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(0,255,240,0.06) 0%, transparent 70%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 255, 240, 0.06) 0%, transparent 70%);
       border-radius: 50%;
-      top: -200px; left: 50%;
+      top: -200px;
+      left: 50%;
       transform: translateX(-50%);
       filter: blur(60px);
       pointer-events: none;
     }
+
     .contract-inner {
       position: relative;
       z-index: 2;
     }
+
     .contract-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -49,16 +58,21 @@
       position: relative;
       overflow: hidden;
     }
+
     .contract-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 3px;
       background: linear-gradient(90deg, transparent, var(--primary), transparent);
     }
+
     .contract-icon {
-      width: 80px; height: 80px;
-      background: rgba(0,255,240,0.08);
+      width: 80px;
+      height: 80px;
+      background: rgba(0, 255, 240, 0.08);
       border: 1px solid var(--border);
       border-radius: 16px;
       display: flex;
@@ -67,6 +81,7 @@
       font-size: 2rem;
       margin: 0 auto 32px;
     }
+
     .contract-title {
       font-family: var(--font-display);
       font-size: clamp(1.8rem, 4vw, 3rem);
@@ -74,20 +89,23 @@
       text-align: center;
       margin-bottom: 12px;
     }
+
     .contract-sub {
       text-align: center;
       color: var(--text-muted);
       margin-bottom: 50px;
       font-size: 0.95rem;
     }
+
     .contract-info-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
       margin-bottom: 40px;
     }
+
     .contract-info-item {
-      background: rgba(255,255,255,0.02);
+      background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--border-dim);
       border-radius: 10px;
       padding: 16px 20px;
@@ -95,7 +113,13 @@
       align-items: flex-start;
       gap: 12px;
     }
-    .ci-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+
+    .ci-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
     .ci-label {
       font-family: var(--mono);
       font-size: 0.65rem;
@@ -104,58 +128,81 @@
       text-transform: uppercase;
       margin-bottom: 4px;
     }
+
     .ci-value {
       font-family: var(--font-display);
       font-size: 0.95rem;
       font-weight: 600;
       color: var(--text-light);
     }
+
     .contract-divider {
       height: 1px;
       background: var(--border-dim);
       margin: 40px 0;
     }
+
     .contract-pdf-preview {
-      background: rgba(0,0,0,0.3);
+      background: rgba(0, 0, 0, 0.3);
       border: 1px solid var(--border);
       border-radius: 12px;
       overflow: hidden;
       margin-bottom: 32px;
     }
+
     .pdf-preview-header {
-      background: rgba(0,255,240,0.05);
+      background: rgba(0, 255, 240, 0.05);
       border-bottom: 1px solid var(--border);
       padding: 14px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
+
     .pdf-preview-header span {
       font-family: var(--mono);
       font-size: 0.75rem;
       letter-spacing: 2px;
       color: var(--text-muted);
     }
-    .pdf-dots { display: flex; gap: 6px; }
+
+    .pdf-dots {
+      display: flex;
+      gap: 6px;
+    }
+
     .pdf-dots span {
-      width: 10px; height: 10px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       display: block;
       letter-spacing: 0;
     }
-    .pdf-dots span:nth-child(1) { background: #ff5f57; }
-    .pdf-dots span:nth-child(2) { background: #ffbd2e; }
-    .pdf-dots span:nth-child(3) { background: #28c940; }
+
+    .pdf-dots span:nth-child(1) {
+      background: #ff5f57;
+    }
+
+    .pdf-dots span:nth-child(2) {
+      background: #ffbd2e;
+    }
+
+    .pdf-dots span:nth-child(3) {
+      background: #28c940;
+    }
+
     .pdf-viewer-area {
       height: 500px;
       display: flex;
       align-items: stretch;
     }
+
     .pdf-viewer-area iframe {
       width: 100%;
       height: 100%;
       border: none;
     }
+
     .pdf-fallback {
       width: 100%;
       display: flex;
@@ -166,14 +213,24 @@
       padding: 40px;
       display: none;
     }
-    .pdf-fallback-icon { font-size: 3rem; }
-    .pdf-fallback p { color: var(--text-muted); text-align: center; font-size: 0.9rem; }
+
+    .pdf-fallback-icon {
+      font-size: 3rem;
+    }
+
+    .pdf-fallback p {
+      color: var(--text-muted);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
     .contract-actions {
       display: flex;
       gap: 16px;
       justify-content: center;
       flex-wrap: wrap;
     }
+
     .btn-download {
       display: inline-flex;
       align-items: center;
@@ -192,27 +249,34 @@
       text-decoration: none;
       cursor: none;
     }
+
     .btn-download:hover {
       background: #fff;
-      box-shadow: 0 0 40px rgba(255,255,255,0.4);
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
       transform: translateY(-2px);
     }
-    .download-icon { font-size: 1.1rem; }
+
+    .download-icon {
+      font-size: 1.1rem;
+    }
+
     .contract-notice {
       margin-top: 32px;
       padding: 16px 20px;
-      background: rgba(255,222,0,0.06);
-      border: 1px solid rgba(255,222,0,0.2);
+      background: rgba(255, 222, 0, 0.06);
+      border: 1px solid rgba(255, 222, 0, 0.2);
       border-radius: 8px;
       display: flex;
       gap: 12px;
       align-items: flex-start;
     }
+
     .contract-notice p {
       color: var(--text-muted);
       font-size: 0.85rem;
       line-height: 1.6;
     }
+
     .back-link {
       display: inline-flex;
       align-items: center;
@@ -225,14 +289,27 @@
       transition: color 0.3s;
       text-decoration: none;
     }
-    .back-link:hover { color: var(--primary); }
+
+    .back-link:hover {
+      color: var(--primary);
+    }
+
     @media (max-width: 640px) {
-      .contract-card { padding: 36px 24px; }
-      .contract-info-grid { grid-template-columns: 1fr; }
-      .pdf-viewer-area { height: 300px; }
+      .contract-card {
+        padding: 36px 24px;
+      }
+
+      .contract-info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pdf-viewer-area {
+        height: 300px;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <div class="cursor-dot"></div>
@@ -266,7 +343,8 @@
 
         <div class="section-label mono" style="margin-bottom:8px;">// DOCUMENTOS OFICIAIS</div>
         <h1 class="contract-title">Contrato de <span class="text-cyan">Prestação</span><br>de Serviços</h1>
-        <p class="contract-sub">Leia atentamente antes de assinar. Em caso de dúvidas, entre em contato com nossa equipe.</p>
+        <p class="contract-sub">Leia atentamente antes de assinar. Em caso de dúvidas, entre em contato com nossa
+          equipe.</p>
 
         <div class="contract-info-grid">
           <div class="contract-info-item">
@@ -309,10 +387,7 @@
             <span>📄 PDF</span>
           </div>
           <div class="pdf-viewer-area">
-            <iframe
-              src="contrato.pdf"
-              title="Contrato Órion Net"
-              id="pdf-iframe">
+            <iframe src="contrato.pdf" title="Contrato Órion Net" id="pdf-iframe">
             </iframe>
           </div>
         </div>
@@ -330,27 +405,33 @@
 
         <div class="contract-notice">
           <span style="font-size:1.2rem;flex-shrink:0;">⚠️</span>
-          <p>Este contrato é parte integrante da relação comercial entre o cliente e a Órion Net Telecom. Ao assinar, o cliente declara estar ciente e de acordo com todos os termos e condições aqui estabelecidos. Para esclarecimentos, entre em contato pelo WhatsApp ou visite uma de nossas lojas.</p>
+          <p>Este contrato é parte integrante da relação comercial entre o cliente e a Órion Net Telecom. Ao assinar, o
+            cliente declara estar ciente e de acordo com todos os termos e condições aqui estabelecidos. Para
+            esclarecimentos, entre em contato pelo WhatsApp ou visite uma de nossas lojas.</p>
         </div>
       </div>
 
       <!-- Lojas -->
-      <div style="max-width:860px;margin:40px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
-        <div class="contract-info-item" style="background:var(--bg-card);border:1px solid var(--border-dim);border-radius:10px;padding:20px;">
+      <div
+        style="max-width:860px;margin:40px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+        <div class="contract-info-item"
+          style="background:var(--bg-card);border:1px solid var(--border-dim);border-radius:10px;padding:20px;">
           <span class="ci-icon">📍</span>
           <div>
             <div class="ci-label">Loja 01</div>
             <div class="ci-value" style="font-size:0.85rem;">Rua 12, N°22, Vila Coquilho<br>São Luís - MA</div>
           </div>
         </div>
-        <div class="contract-info-item" style="background:var(--bg-card);border:1px solid var(--border-dim);border-radius:10px;padding:20px;">
+        <div class="contract-info-item"
+          style="background:var(--bg-card);border:1px solid var(--border-dim);border-radius:10px;padding:20px;">
           <span class="ci-icon">📍</span>
           <div>
             <div class="ci-label">Loja 02</div>
             <div class="ci-value" style="font-size:0.85rem;">Rua Leopoldina Fróes, N°25<br>São Luís - MA</div>
           </div>
         </div>
-        <div class="contract-info-item" style="background:var(--bg-card);border:1px solid var(--border-dim);border-radius:10px;padding:20px;">
+        <div class="contract-info-item"
+          style="background:var(--bg-card);border:1px solid var(--border-dim);border-radius:10px;padding:20px;">
           <span class="ci-icon">📍</span>
           <div>
             <div class="ci-label">Loja 03</div>
@@ -366,7 +447,8 @@
   <a href="https://api.whatsapp.com/send?phone=5598984075060" class="floating-whats" target="_blank">
     <div class="whats-pulse"></div>
     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
-      <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c-.003 1.396.36 2.76 1.045 3.966L0 16l4.223-1.108a7.924 7.924 0 0 0 3.765.952h.004c4.368 0 7.927-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.36c-1.189 0-2.355-.32-3.376-.922l-.242-.144-2.51.658.67-2.448-.158-.252a6.541 6.541 0 0 1-1-3.61c.003-3.626 2.956-6.58 6.59-6.58a6.574 6.574 0 0 1 4.659 1.93 6.573 6.573 0 0 1 1.928 4.66c-.004 3.626-2.957 6.58-6.59 6.58zm3.614-4.935c-.198-.099-1.171-.578-1.352-.644-.18-.067-.312-.099-.444.099-.132.198-.511.644-.627.776-.115.132-.231.149-.429.05-.198-.1-.836-.308-1.592-.985-.587-.525-.985-1.174-1.103-1.372-.119-.198-.013-.305.086-.404.089-.089.198-.231.298-.347.1-.115.132-.198.198-.33.065-.132.033-.247-.017-.347-.05-.099-.444-1.07-.608-1.464-.16-.381-.321-.329-.444-.335-.115-.006-.247-.006-.38-.006a.728.728 0 0 0-.528.247c-.183.198-.702.686-.702 1.673s.719 1.94.819 2.072c.1.132 1.413 2.158 3.424 3.027.479.207.852.33 1.144.423.481.153.92.132 1.265.08.384-.058 1.171-.479 1.336-.942.165-.463.165-.86.116-.942-.05-.083-.183-.132-.381-.231z"/>
+      <path
+        d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c-.003 1.396.36 2.76 1.045 3.966L0 16l4.223-1.108a7.924 7.924 0 0 0 3.765.952h.004c4.368 0 7.927-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.36c-1.189 0-2.355-.32-3.376-.922l-.242-.144-2.51.658.67-2.448-.158-.252a6.541 6.541 0 0 1-1-3.61c.003-3.626 2.956-6.58 6.59-6.58a6.574 6.574 0 0 1 4.659 1.93 6.573 6.573 0 0 1 1.928 4.66c-.004 3.626-2.957 6.58-6.59 6.58zm3.614-4.935c-.198-.099-1.171-.578-1.352-.644-.18-.067-.312-.099-.444.099-.132.198-.511.644-.627.776-.115.132-.231.149-.429.05-.198-.1-.836-.308-1.592-.985-.587-.525-.985-1.174-1.103-1.372-.119-.198-.013-.305.086-.404.089-.089.198-.231.298-.347.1-.115.132-.198.198-.33.065-.132.033-.247-.017-.347-.05-.099-.444-1.07-.608-1.464-.16-.381-.321-.329-.444-.335-.115-.006-.247-.006-.38-.006a.728.728 0 0 0-.528.247c-.183.198-.702.686-.702 1.673s.719 1.94.819 2.072c.1.132 1.413 2.158 3.424 3.027.479.207.852.33 1.144.423.481.153.92.132 1.265.08.384-.058 1.171-.479 1.336-.942.165-.463.165-.86.116-.942-.05-.083-.183-.132-.381-.231z" />
     </svg>
     <span class="whats-tooltip">Tire suas dúvidas!</span>
   </a>
@@ -376,13 +458,14 @@
     // Cursor for this page too
     const dot = document.querySelector('.cursor-dot');
     const outline = document.querySelector('.cursor-outline');
-    let mx=0,my=0,ox=0,oy=0;
-    window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
-    (function tick(){ox+=(mx-ox)*0.15;oy+=(my-oy)*0.15;outline.style.left=ox+'px';outline.style.top=oy+'px';requestAnimationFrame(tick);})();
-    document.querySelectorAll('a,button').forEach(el=>{
-      el.addEventListener('mouseenter',()=>{outline.style.width='48px';outline.style.height='48px';outline.style.borderColor='rgba(0,255,240,0.8)';dot.style.opacity='0';});
-      el.addEventListener('mouseleave',()=>{outline.style.width='32px';outline.style.height='32px';outline.style.borderColor='rgba(0,255,240,0.5)';dot.style.opacity='1';});
+    let mx = 0, my = 0, ox = 0, oy = 0;
+    window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + 'px'; dot.style.top = my + 'px'; });
+    (function tick() { ox += (mx - ox) * 0.15; oy += (my - oy) * 0.15; outline.style.left = ox + 'px'; outline.style.top = oy + 'px'; requestAnimationFrame(tick); })();
+    document.querySelectorAll('a,button').forEach(el => {
+      el.addEventListener('mouseenter', () => { outline.style.width = '48px'; outline.style.height = '48px'; outline.style.borderColor = 'rgba(0,255,240,0.8)'; dot.style.opacity = '0'; });
+      el.addEventListener('mouseleave', () => { outline.style.width = '32px'; outline.style.height = '32px'; outline.style.borderColor = 'rgba(0,255,240,0.5)'; dot.style.opacity = '1'; });
     });
   </script>
 </body>
+
 </html>
