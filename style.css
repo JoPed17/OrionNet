@@ -274,7 +274,7 @@ section { padding: 110px 0; }
 /* ================================ PLANOS ================================ */
 .planos { background: var(--bg-void); position: relative; overflow: hidden; }
 .planos-bg-pattern {
-  position:absolute; inset:0;
+  position:absolute; inset:0; pointer-events:none;
   background: radial-gradient(ellipse 60% 60% at 50% 50%,rgba(0,255,240,0.04) 0%,transparent 70%),
     repeating-linear-gradient(60deg,transparent,transparent 60px,rgba(0,255,240,0.015) 60px,rgba(0,255,240,0.015) 61px);
 }
@@ -316,6 +316,123 @@ section { padding: 110px 0; }
 .btn-plan:hover { border-color:var(--primary); color:var(--primary); background:rgba(0,255,240,0.06); box-shadow:0 0 20px rgba(0,255,240,0.1); }
 .btn-plan-destaque { background:var(--primary)!important; border-color:var(--primary)!important; color:#000!important; box-shadow:0 0 25px var(--primary-glow); }
 .btn-plan-destaque:hover { background:#fff!important; border-color:#fff!important; color:#000!important; }
+
+/* ================================ PLANOS ABAS ================================ */
+.planos-tabs-nav {
+  display: flex; gap: 8px; margin-bottom: 40px;
+  background: rgba(255,255,255,0.03); border: 1px solid var(--border-dim);
+  border-radius: 12px; padding: 8px; flex-wrap: wrap;
+}
+.planos-tab-btn {
+  flex: 1; min-width: 160px; padding: 14px 20px;
+  background: transparent; border: 1px solid transparent; border-radius: 8px;
+  color: var(--text-muted); font-family: var(--font-display); font-weight: 700;
+  font-size: 0.9rem; letter-spacing: 1px; cursor: pointer; text-transform: uppercase;
+  transition: all 0.3s var(--ease); white-space: nowrap;
+}
+.planos-tab-btn:hover { color: var(--text-light); border-color: var(--border); background: rgba(0,255,240,0.04); }
+.planos-tab-btn.active {
+  background: linear-gradient(135deg,rgba(0,255,240,0.12),rgba(0,255,240,0.06));
+  border-color: var(--border); color: var(--primary);
+  box-shadow: 0 0 20px rgba(0,255,240,0.1); text-shadow: 0 0 15px var(--primary-glow);
+}
+.planos-tab-content { display: none; animation: tabFadeIn 0.4s var(--ease); }
+.planos-tab-content.active { display: block; }
+@keyframes tabFadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+/* ================================ ABA CORPORATIVA ================================ */
+.corp-hero {
+  text-align: center; padding: 50px 40px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: 16px; margin-bottom: 40px;
+  position: relative; overflow: hidden;
+}
+.corp-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,255,240,0.06) 0%,transparent 60%);
+  pointer-events: none;
+}
+.corp-hero::after { content: ''; position: absolute; top: 0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--primary),transparent); }
+.corp-title {
+  font-family: var(--font-display); font-size: clamp(1.5rem,3vw,2.2rem);
+  font-weight: 900; margin-bottom: 16px; line-height: 1.2;
+}
+.corp-subtitle { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
+.btn-corp { margin: 0 auto; }
+.corp-benefits {
+  display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 16px; margin-bottom: 40px;
+}
+.corp-benefit-item {
+  display: flex; align-items: center; gap: 14px; padding: 18px 22px;
+  background: var(--bg-card); border: 1px solid var(--border-dim); border-radius: 10px;
+  font-size: 0.95rem; color: var(--text-muted); transition: all 0.3s;
+}
+.corp-benefit-item:hover { border-color: var(--border); color: var(--text-light); transform: translateY(-3px); }
+.corp-check { color: var(--primary); font-size: 1rem; text-shadow: 0 0 8px var(--primary-glow); flex-shrink: 0; }
+.corp-detail {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+  align-items: center; margin-bottom: 40px;
+}
+.corp-detail-text h4 {
+  font-family: var(--font-display); font-size: 1.5rem; font-weight: 700;
+  color: var(--primary); margin-bottom: 20px;
+  text-shadow: 0 0 20px var(--primary-glow);
+}
+.corp-detail-text p { color: var(--text-muted); line-height: 1.8; font-size: 0.95rem; margin-bottom: 14px; }
+.corp-real-img {
+  width: 100%; border-radius: 16px; display: block;
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(0,255,240,0.08);
+  object-fit: cover;
+}
+.corp-cta {
+  text-align: center; padding: 40px; background: linear-gradient(135deg,rgba(0,255,240,0.04),rgba(123,47,255,0.04));
+  border: 1px solid var(--border); border-radius: 16px;
+}
+.corp-cta p { font-size: 1.2rem; font-weight: 600; margin-bottom: 24px; color: var(--text-light); }
+
+/* ================================ ABA PROVEDOR (ISP) ================================ */
+.isp-hero {
+  text-align: center; padding: 50px 40px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: 16px; margin-bottom: 40px; position: relative; overflow: hidden;
+}
+.isp-hero::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%,rgba(123,47,255,0.08) 0%,transparent 60%);
+  pointer-events:none;
+}
+.isp-hero::after { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--secondary),transparent); }
+.isp-title { font-family:var(--font-display); font-size:clamp(1.5rem,3vw,2.2rem); font-weight:900; margin-bottom:14px; }
+.isp-subtitle { color:var(--primary); font-size:1.05rem; font-weight:600; margin-bottom:18px; }
+.isp-desc { color:var(--text-muted); font-size:0.95rem; line-height:1.8; margin-bottom:10px; max-width:750px; margin-left:auto; margin-right:auto; }
+.isp-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:40px; }
+.isp-col { background:var(--bg-card); border:1px solid var(--border-dim); border-radius:12px; padding:30px; }
+.isp-col-title { font-family:var(--font-display); font-size:1.1rem; font-weight:700; color:var(--primary); margin-bottom:20px; }
+.isp-list { display:flex; flex-direction:column; gap:12px; }
+.isp-list li { display:flex; align-items:center; gap:12px; color:var(--text-muted); font-size:0.9rem; padding:8px 0; border-bottom:1px solid var(--border-dim); }
+.isp-list li:last-child { border-bottom:none; }
+.isp-dot { color:var(--secondary); font-size:1.3rem; flex-shrink:0; }
+.isp-infra { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:40px; }
+.isp-infra-card {
+  background:var(--bg-card); border:1px solid var(--border-dim); border-radius:12px; padding:32px;
+  transition:all 0.3s;
+}
+.isp-infra-card:hover { border-color:var(--border); transform:translateY(-4px); }
+.isp-infra-featured { border-color:rgba(0,255,240,0.2)!important; box-shadow:0 0 30px rgba(0,255,240,0.06); }
+.isp-infra-icon { font-size:2.5rem; margin-bottom:16px; filter:drop-shadow(0 0 12px rgba(0,255,240,0.3)); }
+.isp-infra-card h4 { font-family:var(--font-display); font-size:1.2rem; font-weight:700; color:var(--primary); margin-bottom:12px; }
+.isp-infra-card p { color:var(--text-muted); font-size:0.9rem; line-height:1.7; }
+.isp-cta {
+  text-align:center; padding:40px; background:linear-gradient(135deg,rgba(123,47,255,0.06),rgba(0,255,240,0.04));
+  border:1px solid rgba(123,47,255,0.2); border-radius:16px;
+}
+.isp-cta-title { font-size:1.3rem; font-weight:700; margin-bottom:24px; color:var(--text-light); }
+
+/* ================================ PHONE ADDON ICON ================================ */
+.addon-icon-phone {
+  font-size: 3.5rem; line-height: 1; margin-bottom: 4px;
+  filter: drop-shadow(0 0 12px rgba(0,255,240,0.4));
+}
 
 /* ================================ ADD-ONS ================================ */
 .melhorar { background:var(--bg-dark); border-top:1px solid var(--border-dim); }
@@ -539,6 +656,13 @@ footer { background:var(--bg-void); padding:70px 0 24px; position:relative; }
   .sobre-stats { grid-template-columns:1fr 1fr; }
   .download-btns { flex-direction: row; }
   .app-qr-area { justify-content: center; }
+  .planos-tabs-nav { gap: 6px; }
+  .planos-tab-btn { font-size: 0.75rem; padding: 10px 14px; min-width: 130px; letter-spacing: 0.5px; }
+  .corp-detail { grid-template-columns: 1fr; }
+  .isp-grid { grid-template-columns: 1fr; }
+  .isp-infra { grid-template-columns: 1fr; }
+  .corp-benefits { grid-template-columns: 1fr 1fr; }
+  .btn-corp { font-size: 0.75rem; padding: 12px 16px; }
 }
 @media (max-width: 480px) {
   section { padding: 70px 0; }

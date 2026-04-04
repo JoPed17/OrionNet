@@ -36,6 +36,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ================================
+     PLANOS — TAB SWITCHER
+  ================================ */
+  const tabButtons = document.querySelectorAll('.planos-tab-btn');
+  const tabContents = document.querySelectorAll('.planos-tab-content');
+  if (tabButtons.length && tabContents.length) {
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.tab;
+        tabButtons.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        const content = document.getElementById('tab-' + target);
+        if (content) content.classList.add('active');
+      });
+    });
+  }
+
+  /* ================================
      STICKY HEADER
   ================================ */
   const header = document.querySelector('.site-header');
