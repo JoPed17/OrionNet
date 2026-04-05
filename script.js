@@ -151,7 +151,16 @@ document.addEventListener('DOMContentLoaded', () => {
     let orionOffset = { x: 0, y: 0 };
     let targetOffset = { x: 0, y: 0 };
 
+    let isOrionVisible = true;
+    new IntersectionObserver((entries) => {
+      isOrionVisible = entries[0].isIntersecting;
+    }).observe(document.getElementById('home') || orionCanvas);
+
     function drawOrion() {
+      if (!isOrionVisible) {
+        requestAnimationFrame(drawOrion);
+        return;
+      }
       t += 0.016;
       ctx.clearRect(0, 0, W, H);
 
@@ -332,7 +341,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
 
     let st = 0;
+    let isSpeedVisible = false;
+    new IntersectionObserver((entries) => {
+      isSpeedVisible = entries[0].isIntersecting;
+    }).observe(document.getElementById('speedtest') || starsCanvas);
+
     function drawSpeedtestBg() {
+      if (!isSpeedVisible) {
+        requestAnimationFrame(drawSpeedtestBg);
+        return;
+      }
       st += 0.008;
       sc.clearRect(0, 0, sW, sH);
 
@@ -378,9 +396,14 @@ document.addEventListener('DOMContentLoaded', () => {
   ================================ */
   const phoneSpeed = document.getElementById('phone-speed');
   if (phoneSpeed) {
+    let isPhoneVisible = false;
+    new IntersectionObserver((entries) => { isPhoneVisible = entries[0].isIntersecting; })
+        .observe(document.getElementById('app') || phoneSpeed);
+
     const speeds = [342, 589, 412, 720, 298, 633, 800, 455];
     let si = 0;
     setInterval(() => {
+      if (!isPhoneVisible) return;
       si = (si + 1) % speeds.length;
       const target = speeds[si];
       let current = parseInt(phoneSpeed.textContent) || 0;
